@@ -1,0 +1,37 @@
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-8">
+            <% if (!contact) { %>
+                <div class="alert alert-danger" role="alert">
+                    Data not found <a href="/contact" class="alert-link">Click here to back</a>.
+                </div>
+                <% } else { %>
+                    <h2>Detail Contact</h2>
+                    <div class="card mt-3" style="width: 18rem; background-color: #ffffff40;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="color: white;">
+                                <%= contact.name %>
+                            </h5>
+                            <h6 class="card-subtitle mb-2">
+                                <%= contact.phoneNumber %>
+                            </h6>
+                            <p class="card-text" style="color: white;">
+                                <%= contact.email %>
+                            </p>
+                            <a href="/contact/edit/<%= contact.name %>" class="btn badge badge-pill badge-success"><i
+                                    class="las la-edit"></i> Edit</a>
+                            <form action="/contact?_method=DELETE" method="post" class="d-inline">
+                                <input type="hidden" name="_id" value="<%= contact._id %>">
+                                <button type="submit" class="btn badge badge-pill badge-danger"
+                                    onclick="return confirm('Are you sure?')"><i class=" las la-trash"></i>
+                                    Delete</button>
+                            </form>
+                            <a href="/contact" class="btn badge badge-pill badge-info"><i
+                                    class="las la-arrow-alt-circle-left"></i> Back</a>
+
+                        </div>
+                    </div>
+                    <% } %>
+        </div>
+    </div>
+</div>
